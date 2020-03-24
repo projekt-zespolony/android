@@ -13,7 +13,7 @@ public class MeasurementsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measurements);
 
-        setTitle("Pomiary");
+        setTitle(R.string.measurements);
 
         //Setup toolbar aka actionbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

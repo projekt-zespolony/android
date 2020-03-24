@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Client</string>
+    <string name="measurements">Measurements</string>
+    <string name="last_measurements">Last measurements</string>
+    <string name="temperature">Temperature</string>
+    <string name="humidity">Humidity</string>
+    <string name="air_quality">Air quality</string>
 </resources>

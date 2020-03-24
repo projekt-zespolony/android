@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Client</string>
+    <string name="measurements">Pomiary</string>
+    <string name="last_measurements">Ostatnie pomiary</string>
+    <string name="temperature">Temperatura</string>
+    <string name="humidity">Wilgotność</string>
+    <string name="air_quality">Jakość powierza</string>
+</resources>

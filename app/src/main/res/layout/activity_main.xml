@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorSecondary"
+    android:background="@color/colorPrimaryLight"
     tools:context=".MainActivity">
 
 
@@ -12,7 +12,7 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#202225"
+        android:background="@color/colorPrimaryDark"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,6 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="#37393f"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +48,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/image_button_background"
-                android:contentDescription="Pomiary"
+                android:contentDescription="@string/measurements"
                 android:elevation="5dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,13 +59,15 @@
                 android:id="@+id/textViewButton1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#cdcdcd"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/colorTextOnPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/imageButton1"
-                app:layout_constraintStart_toStartOf="@+id/imageButton1"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageButton1"
-                tools:text="Pomiary" />
+                tools:text="@string/measurements" />
 
             <ImageButton
                 android:id="@+id/imageButton2"
@@ -87,11 +88,13 @@
                 android:id="@+id/textViewButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#cdcdcd"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/colorTextOnPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/imageButton2"
-                app:layout_constraintStart_toStartOf="@+id/imageButton2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/imageButton2"
                 tools:text="Activity 2" />
 
@@ -114,11 +117,13 @@
                 android:id="@+id/textViewButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#cdcdcd"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/colorTextOnPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/imageButton3"
-                app:layout_constraintStart_toStartOf="@+id/imageButton3"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageButton3"
                 tools:text="Activity 3" />
 
@@ -141,13 +146,15 @@
                 android:id="@+id/textViewButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/colorTextOnPrimary"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/imageButton4"
-                app:layout_constraintStart_toStartOf="@+id/imageButton4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/imageButton4"
-                tools:text="Activity 4"
-                android:textColor="#cdcdcd" />
+                tools:text="Activity 4" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

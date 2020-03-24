@@ -4,95 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#37393f"
+    android:background="@color/colorPrimaryLight"
     tools:context=".MeasurementsActivity">
-
-    <TextView
-        android:id="@+id/textViewTemperatureValue"
-        android:layout_width="100dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="36dp"
-        android:text="0"
-        android:textColor="#4CAF50"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/textViewTemperature"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLastMeasurements" />
-
-    <TextView
-        android:id="@+id/textViewAirQualityValue"
-        android:layout_width="100dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="17dp"
-        android:text="0"
-        android:textAllCaps="false"
-        android:textColor="#FF2222"
-        android:textColorHighlight="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/textViewAirQuality"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHumidityValue" />
-
-    <TextView
-        android:id="@+id/textViewHumidityValue"
-        android:layout_width="100dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:text="0"
-        android:textColor="#FF5722"
-        android:textColorHighlight="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/textViewHumidity"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTemperatureValue" />
-
-    <TextView
-        android:id="@+id/textViewTemperature"
-        android:layout_width="118dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="36dp"
-        android:text="Temperatura"
-        android:textAlignment="viewStart"
-        android:textColor="#cdcdcd"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLastMeasurements" />
-
-    <TextView
-        android:id="@+id/textViewHumidity"
-        android:layout_width="92dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:text="Wilgotność"
-        android:textAlignment="viewStart"
-        android:textColor="#cdcdcd"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTemperature" />
-
-    <TextView
-        android:id="@+id/textViewAirQuality"
-        android:layout_width="155dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:text="Jakość powietrza"
-        android:textAlignment="viewStart"
-        android:textColor="#cdcdcd"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHumidity" />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#202225"
+        android:background="@color/colorPrimaryDark"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -100,18 +19,113 @@
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
 
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="textViewTemperature, textViewHumidity, textViewAirQuality"
+        tools:layout_editor_absoluteX="411dp" />
+
     <TextView
         android:id="@+id/textViewLastMeasurements"
-        android:layout_width="200dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="19dp"
-        android:text="Ostatnie Pomiary"
+        android:layout_marginTop="24dp"
+        android:text="@string/last_measurements"
         android:textAlignment="center"
-        android:textColor="#cdcdcd"
+        android:textColor="@color/colorTextOnPrimary"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/textViewTemperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/temperature"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorTextOnPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLastMeasurements" />
+
+    <TextView
+        android:id="@+id/textViewTemperatureValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="0"
+        android:textColor="#4CAF50"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTemperature"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/barrier"
+        app:layout_constraintTop_toTopOf="@+id/textViewTemperature" />
+
+    <TextView
+        android:id="@+id/textViewHumidity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/humidity"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorTextOnPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTemperature" />
+
+    <TextView
+        android:id="@+id/textViewHumidityValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="0"
+        android:textColor="#FF5722"
+        android:textColorHighlight="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewHumidity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/barrier"
+        app:layout_constraintTop_toTopOf="@+id/textViewHumidity" />
+
+    <TextView
+        android:id="@+id/textViewAirQuality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/air_quality"
+        android:textAlignment="viewStart"
+        android:textColor="@color/colorTextOnPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHumidity" />
+
+    <TextView
+        android:id="@+id/textViewAirQualityValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="0"
+        android:textAllCaps="false"
+        android:textColor="#FF2222"
+        android:textColorHighlight="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewAirQuality"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/barrier"
+        app:layout_constraintTop_toTopOf="@+id/textViewAirQuality" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
