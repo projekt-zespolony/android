@@ -60,6 +60,7 @@
                 android:id="@+id/textViewButton1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#cdcdcd"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/imageButton1"
@@ -86,6 +87,7 @@
                 android:id="@+id/textViewButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#cdcdcd"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/imageButton2"
@@ -112,6 +114,7 @@
                 android:id="@+id/textViewButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#cdcdcd"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="@+id/imageButton3"
@@ -143,7 +146,8 @@
                 app:layout_constraintEnd_toEndOf="@+id/imageButton4"
                 app:layout_constraintStart_toStartOf="@+id/imageButton4"
                 app:layout_constraintTop_toBottomOf="@+id/imageButton4"
-                tools:text="Activity 4" />
+                tools:text="Activity 4"
+                android:textColor="#cdcdcd" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
