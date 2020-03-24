@@ -49,7 +49,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/image_button_background"
-                android:contentDescription="Activity 1"
+                android:contentDescription="Pomiary"
                 android:elevation="5dp"
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +66,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/imageButton1"
                 app:layout_constraintStart_toStartOf="@+id/imageButton1"
                 app:layout_constraintTop_toBottomOf="@+id/imageButton1"
-                tools:text="Activity 1" />
+                tools:text="Pomiary" />
 
             <ImageButton
                 android:id="@+id/imageButton2"

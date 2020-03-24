@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //TODO Rename intents and activities (once we figure out what is what)
-        activityIntent1 = new Intent(getApplicationContext(), Activity1.class);
+        activityIntent1 = new Intent(getApplicationContext(), MeasurementsActivity.class);
         activityIntent2 = new Intent(getApplicationContext(), Activity2.class);
         activityIntent3 = new Intent(getApplicationContext(), Activity3.class);
         activityIntent4 = new Intent(getApplicationContext(), Activity4.class);

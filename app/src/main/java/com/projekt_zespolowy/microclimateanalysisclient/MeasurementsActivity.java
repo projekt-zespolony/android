@@ -6,15 +6,14 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 
-public class Activity1 extends AppCompatActivity {
+public class MeasurementsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_1);
+        setContentView(R.layout.activity_measurements);
 
-        //TODO Change name.
-        setTitle("Activity 1");
+        setTitle("Pomiary");
 
         //Setup toolbar aka actionbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
