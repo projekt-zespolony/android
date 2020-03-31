@@ -4,7 +4,7 @@
     <PreferenceCategory app:title="@string/notifications_header">
 
         <SwitchPreference
-            android:summary="Turns on/off notifications"
+            android:summary="@string/pref_summary_on_off_notifications"
             app:key="notifications"
             app:title="@string/pref_show_notifications" />
 

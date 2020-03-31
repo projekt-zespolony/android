@@ -13,5 +13,6 @@
     <!-- Preference Titles -->
     <string name="pref_show_notifications">Show notifications</string>
     <string name="pref_send_feedback">Send feedback</string>
+    <string name="pref_summary_on_off_notifications">Turns on/off notifications</string>
 
 </resources>
