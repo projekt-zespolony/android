@@ -6,4 +6,9 @@
     <string name="temperature">Temperatura</string>
     <string name="humidity">Wilgotność</string>
     <string name="air_quality">Jakość powierza</string>
+    <string name="title_activity_settings">Ustawienia</string>
+    <string name="notifications_header">Powiadomienia</string>
+    <string name="help_header">Pomoc</string>
+    <string name="pref_show_notifications">Pokazuj powiadomienia</string>
+    <string name="pref_send_feedback">Prześlij opinię</string>
 </resources>
