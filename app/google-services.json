@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "654507280821",
+    "firebase_url": "https://projekt-zespolony.firebaseio.com",
+    "project_id": "projekt-zespolony",
+    "storage_bucket": "projekt-zespolony.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:654507280821:android:03f140245204b8d636f1fc",
+        "android_client_info": {
+          "package_name": "com.projekt_zespolowy.microclimateanalysisclient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "654507280821-giqohk2i33i8id48ingfeb2qkjhdas86.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu_S7u-KtCxnJ8XjgKqwPakLY5-QkTM5k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "654507280821-giqohk2i33i8id48ingfeb2qkjhdas86.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
