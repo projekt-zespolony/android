@@ -41,7 +41,7 @@ public class MeasurementsActivity extends AppCompatActivity implements Callback<
 
         textViewTemperatureValue = findViewById(R.id.textViewTemperatureValue);
         textViewHumidityValue = findViewById(R.id.textViewHumidityValue);
-        layout = findViewById(R.id.measurementsLayout);
+        measurementsLayout = findViewById(R.id.measurementsLayout);
 
         handler = new Handler();
     }
@@ -76,6 +76,6 @@ public class MeasurementsActivity extends AppCompatActivity implements Callback<
 
     @Override
     public void onFailure(Call<Sensors> call, Throwable t) {
-        Snackbar.make(layout, "API error", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(measurementsLayout, "API error", Snackbar.LENGTH_SHORT).show();
     }
 }
