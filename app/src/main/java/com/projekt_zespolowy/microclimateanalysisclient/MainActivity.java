@@ -21,34 +21,29 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
-    //Custom OnClickListener
-    private class MenuButtonListener implements View.OnClickListener {
-
-        private Intent intent;
-
-        MenuButtonListener(Intent intent) {
-            this.intent = intent;
-        }
-
-        @Override
-        public void onClick(View view) {
-            //Opening given activity on click
-            openGivenActivity(intent);
-            Toast.makeText(getApplicationContext(), view.getContentDescription(), Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private Intent activityIntent1, activityIntent2, activityIntent3, activityIntent4;
-    private ImageButton ib1, ib2, ib3, ib4; //Activity buttons
-    private TextView tb1, tb2, tb3, tb4; //Text names for buttons
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    // Activity buttons
+    @BindView(R.id.imageButton1) ImageButton ib1;
+    @BindView(R.id.imageButton2) ImageButton ib2;
+    @BindView(R.id.imageButton3) ImageButton ib3;
+    @BindView(R.id.imageButton4) ImageButton ib4;
+    //Text names for buttons
+    @BindView(R.id.textViewButton1) TextView tb1;
+    @BindView(R.id.textViewButton2) TextView tb2;
+    @BindView(R.id.textViewButton3) TextView tb3;
+    @BindView(R.id.textViewButton4) TextView tb4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         // Subscribe to 'default` FCM topic
         FirebaseMessaging messaging = FirebaseMessaging.getInstance();
@@ -73,36 +68,43 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Micro Climate Client");
 
         //Setup toolbar aka actionbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         //TODO Rename intents and activities (once we figure out what is what)
-        activityIntent1 = new Intent(getApplicationContext(), MeasurementsActivity.class);
-        activityIntent2 = new Intent(getApplicationContext(), Activity2.class);
-        activityIntent3 = new Intent(getApplicationContext(), Activity3.class);
-        activityIntent4 = new Intent(getApplicationContext(), Activity4.class);
+        Intent activityIntent1 = new Intent(getApplicationContext(), MeasurementsActivity.class);
+        Intent activityIntent2 = new Intent(getApplicationContext(), Activity2.class);
+        Intent activityIntent3 = new Intent(getApplicationContext(), Activity3.class);
+        Intent activityIntent4 = new Intent(getApplicationContext(), Activity4.class);
 
-        //Setting up buttons and listeners
+        //Setting up buttons listeners
         //TODO button icons
-        ib1 = (ImageButton) findViewById(R.id.imageButton1);
         ib1.setOnClickListener(new MenuButtonListener(activityIntent1));
-        ib2 = (ImageButton) findViewById(R.id.imageButton2);
         ib2.setOnClickListener(new MenuButtonListener(activityIntent2));
-        ib3 = (ImageButton) findViewById(R.id.imageButton3);
         ib3.setOnClickListener(new MenuButtonListener(activityIntent3));
-        ib4 = (ImageButton) findViewById(R.id.imageButton4);
         ib4.setOnClickListener(new MenuButtonListener(activityIntent4));
 
         //TODO correct(?) names
         //Setting buttons names
-        tb1 = (TextView) findViewById(R.id.textViewButton1);
         tb1.setText(ib1.getContentDescription());
-        tb2 = (TextView) findViewById(R.id.textViewButton2);
         tb2.setText(ib2.getContentDescription());
-        tb3 = (TextView) findViewById(R.id.textViewButton3);
         tb3.setText(ib3.getContentDescription());
-        tb4 = (TextView) findViewById(R.id.textViewButton4);
         tb4.setText(ib4.getContentDescription());
+    }
+
+    //Custom OnClickListener
+    private class MenuButtonListener implements View.OnClickListener {
+        private Intent intent;
+
+        MenuButtonListener(Intent intent) {
+            this.intent = intent;
+        }
+
+        @Override
+        public void onClick(View view) {
+            //Opening given activity on click
+            openGivenActivity(intent);
+            Toast.makeText(getApplicationContext(), view.getContentDescription(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -127,5 +129,4 @@ public class MainActivity extends AppCompatActivity {
     private void openGivenActivity(Intent intent) {
         startActivity(intent);
     }
-
 }

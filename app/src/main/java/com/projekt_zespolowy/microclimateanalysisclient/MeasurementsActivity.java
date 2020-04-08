@@ -8,10 +8,11 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,31 +20,27 @@ import retrofit2.Response;
 public class MeasurementsActivity extends AppCompatActivity implements Callback<Sensors>, Runnable {
     private final static int REFRESH_INTERVAL = 5000;
 
-    private ConstraintLayout measurementsLayout;
-    private TextView textViewTemperatureValue;
-    private TextView textViewHumidityValue;
-    private Handler handler;
+    @BindView(R.id.measurementsLayout) ConstraintLayout measurementsLayout;
+    @BindView(R.id.textViewTemperatureValue) TextView textViewTemperatureValue;
+    @BindView(R.id.textViewHumidityValue) TextView textViewHumidityValue;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measurements);
-
+        ButterKnife.bind(this);
         setTitle(R.string.measurements);
 
         //Setup toolbar aka actionbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         //Enable Up button
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)
             actionBar.setDisplayHomeAsUpEnabled(true);
-
-        textViewTemperatureValue = findViewById(R.id.textViewTemperatureValue);
-        textViewHumidityValue = findViewById(R.id.textViewHumidityValue);
-        measurementsLayout = findViewById(R.id.measurementsLayout);
-
-        handler = new Handler();
     }
 
     @Override
