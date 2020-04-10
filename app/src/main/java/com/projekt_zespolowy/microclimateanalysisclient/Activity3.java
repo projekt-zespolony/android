@@ -6,19 +6,22 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 
+import com.projekt_zespolowy.microclimateanalysisclient.databinding.Activity3Binding;
+
 public class Activity3 extends AppCompatActivity {
+    private Activity3Binding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_3);
+        binding = Activity3Binding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         //TODO Change name.
         setTitle("Activity 3");
 
         //Setup toolbar aka actionbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbar);
         //Enable Up button
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null)

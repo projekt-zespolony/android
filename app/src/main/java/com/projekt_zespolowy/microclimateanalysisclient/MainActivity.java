@@ -11,39 +11,22 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.projekt_zespolowy.microclimateanalysisclient.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
-
-    @BindView(R.id.toolbar) Toolbar toolbar;
-    // Activity buttons
-    @BindView(R.id.imageButton1) ImageButton ib1;
-    @BindView(R.id.imageButton2) ImageButton ib2;
-    @BindView(R.id.imageButton3) ImageButton ib3;
-    @BindView(R.id.imageButton4) ImageButton ib4;
-    //Text names for buttons
-    @BindView(R.id.textViewButton1) TextView tb1;
-    @BindView(R.id.textViewButton2) TextView tb2;
-    @BindView(R.id.textViewButton3) TextView tb3;
-    @BindView(R.id.textViewButton4) TextView tb4;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         // Subscribe to 'default` FCM topic
         FirebaseMessaging messaging = FirebaseMessaging.getInstance();
@@ -51,13 +34,13 @@ public class MainActivity extends AppCompatActivity {
         tasks.addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                Log.i(TAG, "Subscription to topic succeeded");
+                Log.i("FIREBASE", "Subscription to topic succeeded");
             }
         });
         tasks.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.w(TAG, "Subscription to topic failed");
+                Log.w("FIREBASE", "Subscription to topic failed");
             }
         });
 
@@ -68,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         setTitle("Micro Climate Client");
 
         //Setup toolbar aka actionbar
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbar);
 
         //TODO Rename intents and activities (once we figure out what is what)
         Intent activityIntent1 = new Intent(getApplicationContext(), MeasurementsActivity.class);
@@ -78,17 +61,17 @@ public class MainActivity extends AppCompatActivity {
 
         //Setting up buttons listeners
         //TODO button icons
-        ib1.setOnClickListener(new MenuButtonListener(activityIntent1));
-        ib2.setOnClickListener(new MenuButtonListener(activityIntent2));
-        ib3.setOnClickListener(new MenuButtonListener(activityIntent3));
-        ib4.setOnClickListener(new MenuButtonListener(activityIntent4));
+        binding.imageButton1.setOnClickListener(new MenuButtonListener(activityIntent1));
+        binding.imageButton2.setOnClickListener(new MenuButtonListener(activityIntent2));
+        binding.imageButton3.setOnClickListener(new MenuButtonListener(activityIntent3));
+        binding.imageButton4.setOnClickListener(new MenuButtonListener(activityIntent4));
 
         //TODO correct(?) names
         //Setting buttons names
-        tb1.setText(ib1.getContentDescription());
-        tb2.setText(ib2.getContentDescription());
-        tb3.setText(ib3.getContentDescription());
-        tb4.setText(ib4.getContentDescription());
+        binding.textViewButton1.setText(binding.imageButton1.getContentDescription());
+        binding.textViewButton2.setText(binding.imageButton2.getContentDescription());
+        binding.textViewButton3.setText(binding.imageButton3.getContentDescription());
+        binding.textViewButton4.setText(binding.imageButton4.getContentDescription());
     }
 
     //Custom OnClickListener

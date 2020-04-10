@@ -9,24 +9,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.preference.PreferenceFragmentCompat;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import com.projekt_zespolowy.microclimateanalysisclient.databinding.SettingsActivityBinding;
 
 public class SettingsActivity extends AppCompatActivity {
-    @BindView(R.id.toolbar) Toolbar toolbar;
+    private SettingsActivityBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.settings_activity);
-        ButterKnife.bind(this);
+        binding = SettingsActivityBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.settings, new SettingsFragment())
                 .commit();
 
         //Setup toolbar aka actionbar
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbar);
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {

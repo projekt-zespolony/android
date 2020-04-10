@@ -10,9 +10,8 @@ import android.os.Handler;
 import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.projekt_zespolowy.microclimateanalysisclient.databinding.ActivityMeasurementsBinding;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,22 +19,19 @@ import retrofit2.Response;
 public class MeasurementsActivity extends AppCompatActivity implements Callback<Sensors>, Runnable {
     private final static int REFRESH_INTERVAL = 5000;
 
-    @BindView(R.id.measurementsLayout) ConstraintLayout measurementsLayout;
-    @BindView(R.id.textViewTemperatureValue) TextView textViewTemperatureValue;
-    @BindView(R.id.textViewHumidityValue) TextView textViewHumidityValue;
-    @BindView(R.id.toolbar) Toolbar toolbar;
+    private ActivityMeasurementsBinding binding;
 
     private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_measurements);
-        ButterKnife.bind(this);
+        binding = ActivityMeasurementsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         setTitle(R.string.measurements);
 
         //Setup toolbar aka actionbar
-        setSupportActionBar(toolbar);
+        setSupportActionBar(binding.toolbar);
 
         //Enable Up button
         ActionBar actionBar = getSupportActionBar();
@@ -65,14 +61,14 @@ public class MeasurementsActivity extends AppCompatActivity implements Callback<
     public void onResponse(Call<Sensors> call, Response<Sensors> response) {
         Sensors sensors = response.body();
         if (sensors != null) {
-            textViewTemperatureValue.setText(String.valueOf(sensors.getTemperature()));
-            textViewHumidityValue.setText(String.valueOf(sensors.getHumidity()));
+            binding.textViewTemperatureValue.setText(String.valueOf(sensors.getTemperature()));
+            binding.textViewHumidityValue.setText(String.valueOf(sensors.getHumidity()));
         }
-        Snackbar.make(measurementsLayout, "API ok", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(binding.getRoot(), "API ok", Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
     public void onFailure(Call<Sensors> call, Throwable t) {
-        Snackbar.make(measurementsLayout, "API error", Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(binding.getRoot(), "API error", Snackbar.LENGTH_SHORT).show();
     }
 }
