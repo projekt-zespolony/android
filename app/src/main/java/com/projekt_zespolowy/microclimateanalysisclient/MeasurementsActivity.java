@@ -1,13 +1,11 @@
 package com.projekt_zespolowy.microclimateanalysisclient;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.projekt_zespolowy.microclimateanalysisclient.databinding.ActivityMeasurementsBinding;
@@ -41,7 +39,7 @@ public class MeasurementsActivity extends AppCompatActivity implements Callback<
 
     @Override
     public void run() {
-        SensorsApi.getInstance().sensors().enqueue(this);
+        SensorsApi.getSensorsCall().enqueue(this);
         handler.postDelayed(this, REFRESH_INTERVAL);
     }
 
@@ -58,7 +56,7 @@ public class MeasurementsActivity extends AppCompatActivity implements Callback<
     }
 
     @Override
-    public void onResponse(Call<Sensors> call, Response<Sensors> response) {
+    public void onResponse(@NonNull Call<Sensors> call, Response<Sensors> response) {
         Sensors sensors = response.body();
         if (sensors != null) {
             binding.textViewTemperatureValue.setText(String.valueOf(sensors.getTemperature()));
@@ -68,7 +66,7 @@ public class MeasurementsActivity extends AppCompatActivity implements Callback<
     }
 
     @Override
-    public void onFailure(Call<Sensors> call, Throwable t) {
+    public void onFailure(@NonNull Call<Sensors> call, Throwable t) {
         Snackbar.make(binding.getRoot(), "API error", Snackbar.LENGTH_SHORT).show();
     }
 }
