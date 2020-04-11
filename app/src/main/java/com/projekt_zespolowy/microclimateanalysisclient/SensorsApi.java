@@ -5,7 +5,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SensorsApi {
-    private static final String BASE_URL = "https://projekt-zespolony.awsmppl.com";
+    private static final String BASE_URL = "https://projekt-zespolowy.pl";
 
     private static SensorsApi instance;
     private Retrofit retrofit;
