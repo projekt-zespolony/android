@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="temperature_too_damn_high_start">36</integer>
+    <integer name="temperature_high_stop">35</integer>
+    <integer name="temperature_high_start">21</integer>
+    <integer name="temperature_medium_stop">20</integer>
+    <integer name="temperature_medium_start">6</integer>
+    <integer name="temperature_low_stop">5</integer>
+</resources>
