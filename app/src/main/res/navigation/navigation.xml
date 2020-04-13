@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.projekt_zespolowy.microclimateanalysisclient.view.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_measurementsFragment"
+            app:destination="@id/measurementsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_secondFragment"
+            app:destination="@id/secondFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_thirdFragment"
+            app:destination="@id/thirdFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_mainFragment_to_fourthFragment"
+            app:destination="@id/fourthFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.projekt_zespolowy.microclimateanalysisclient.view.SettingsFragment"
+        android:label="SettingsFragment" />
+    <fragment
+        android:id="@+id/measurementsFragment"
+        android:name="com.projekt_zespolowy.microclimateanalysisclient.view.MeasurementsFragment"
+        android:label="measurements_fragment"
+        tools:layout="@layout/fragment_measurements" />
+    <fragment
+        android:id="@+id/secondFragment"
+        android:name="com.projekt_zespolowy.microclimateanalysisclient.view.SecondFragment"
+        android:label="SecondFragment"
+        tools:layout="@layout/fragment_second" />
+    <fragment
+        android:id="@+id/thirdFragment"
+        android:name="com.projekt_zespolowy.microclimateanalysisclient.view.ThirdFragment"
+        android:label="ThirdFragment"
+        tools:layout="@layout/fragment_third" />
+    <fragment
+        android:id="@+id/fourthFragment"
+        android:name="com.projekt_zespolowy.microclimateanalysisclient.view.FourthFragment"
+        android:label="FourthFragment"
+        tools:layout="@layout/fragment_fourth" />
+</navigation>
