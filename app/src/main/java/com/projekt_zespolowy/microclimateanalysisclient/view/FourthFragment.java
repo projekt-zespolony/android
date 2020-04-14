@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.projekt_zespolowy.microclimateanalysisclient.R;
@@ -26,6 +27,10 @@ public class FourthFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle(R.string.title_fourth);
-        Snackbar.make(binding.getRoot(), getActivity().getTitle(), Snackbar.LENGTH_SHORT).show();
+        Snackbar snackbar = Snackbar.make(binding.getRoot(), getActivity().getTitle(), Snackbar.LENGTH_LONG);
+        snackbar.setAction("BACK", v -> {
+            Navigation.findNavController(getActivity(), R.id.navigation_host_fragment).navigateUp();
+        });
+        snackbar.show();
     }
 }
