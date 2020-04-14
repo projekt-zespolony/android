@@ -1,12 +1,32 @@
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
-        <item name="android:colorPrimary">@color/background</item>
-        <item name="android:colorPrimaryDark">@color/background</item>
-        <item name="android:colorAccent">@color/accent</item>
-        <item name="android:colorControlActivated">@color/accent</item>
-        <item name="android:background">@color/background</item>
+    <style name="AppTheme" parent="Theme.MaterialComponents">
+        <item name="snackbarStyle">@style/SnackBarStyle</item>
+        <item name="snackbarTextViewStyle">@style/SnackBarTextViewStyle</item>
+        <item name="snackbarButtonStyle">@style/SnackBarButtonStyle</item>
+
+        <item name="actionBarStyle">@style/ActionBarStyle</item>
+
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:windowBackground">@color/background</item>
         <item name="android:textColor">@color/foreground</item>
-        <item name="android:textColorPrimary">@color/foreground</item>
         <item name="android:textColorSecondary">@color/foreground_darker</item>
+        <item name="android:colorControlActivated">@color/accent</item>
+        <item name="android:colorAccent">@color/accent</item>
+    </style>
+
+    <style name="SnackBarStyle" parent="Widget.MaterialComponents.Snackbar.FullWidth">
+        <item name="android:background">@color/background_darker</item>
+    </style>
+
+    <style name="SnackBarTextViewStyle" parent="Widget.MaterialComponents.Snackbar.TextView">
+        <item name="android:textColor">@color/foreground</item>
+    </style>
+
+    <style name="SnackBarButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Snackbar">
+        <item name="android:textColor">@color/accent</item>
+    </style>
+
+    <style name="ActionBarStyle" parent="Widget.MaterialComponents.ActionBar.Solid">
+        <item name="background">@color/background</item>
     </style>
 </resources>
