@@ -9,9 +9,9 @@
 
     <!-- Toolbar titles -->
     <string name="title_measurements">Measurements</string>
+    <string name="title_measurements_from_day">Measurements (day)</string>
     <string name="title_settings">Settings</string>
     <string name="title_main">Menu</string>
-    <string name="title_second">Second</string>
     <string name="title_third">Third</string>
     <string name="title_fourth">Fourth</string>
 
