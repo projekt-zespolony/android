@@ -14,7 +14,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MeasurementsViewModel extends ViewModel implements Callback<Sensors> {
+public class MeasurementsViewModel extends ViewModel {
     private SensorsApi api;
     private MutableLiveData<Sensors> sensors;
     private MutableLiveData<Throwable> error;
@@ -38,16 +38,16 @@ public class MeasurementsViewModel extends ViewModel implements Callback<Sensors
     }
 
     public void updateSensors() {
-        api.sensors().enqueue(this);
-    }
+        api.sensors().enqueue(new Callback<Sensors>() {
+            @Override
+            public void onResponse(@NonNull Call<Sensors> call, @NonNull Response<Sensors> response) {
+                sensors.setValue(response.body());
+            }
 
-    @Override
-    public void onResponse(@NonNull Call<Sensors> call, @NonNull Response<Sensors> response) {
-        sensors.setValue(response.body());
-    }
-
-    @Override
-    public void onFailure(@NonNull Call<Sensors> call, @NonNull Throwable t) {
-        error.setValue(t);
+            @Override
+            public void onFailure(@NonNull Call<Sensors> call, @NonNull Throwable t) {
+                error.setValue(t);
+            }
+        });
     }
 }
