@@ -8,46 +8,49 @@ import androidx.lifecycle.ViewModel;
 import com.projekt_zespolowy.microclimateanalysisclient.api.SensorsApi;
 import com.projekt_zespolowy.microclimateanalysisclient.model.Sensors;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MeasurementsViewModel extends ViewModel {
+public class MeasurementsFromDayViewModel extends ViewModel {
     private SensorsApi api;
-    private MutableLiveData<Sensors> sensors;
+    private MutableLiveData<List<Sensors>> sensorsHours;
     private MutableLiveData<Throwable> error;
 
-    public MeasurementsViewModel() {
+    public MeasurementsFromDayViewModel() {
         api = new Retrofit.Builder()
                 .baseUrl(api.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(SensorsApi.class);
-        sensors = new MutableLiveData<>();
+        sensorsHours = new MutableLiveData<>();
         error = new MutableLiveData<>();
     }
 
-    public LiveData<Sensors> getSensors() {
-        return sensors;
+    public LiveData<List<Sensors>> getSensorsHours() {
+        return sensorsHours;
     }
 
     public LiveData<Throwable> getError() {
         return error;
     }
 
-    public void updateSensors() {
-        api.sensors().enqueue(new Callback<Sensors>() {
+    public void updateSensorsHours(int hours) {
+        api.sensorsHours(hours).enqueue(new Callback<List<Sensors>>() {
             @Override
-            public void onResponse(@NonNull Call<Sensors> call, @NonNull Response<Sensors> response) {
-                sensors.setValue(response.body());
+            public void onResponse(@NonNull Call<List<Sensors>> call, @NonNull Response<List<Sensors>> response) {
+                sensorsHours.setValue(response.body());
             }
 
             @Override
-            public void onFailure(@NonNull Call<Sensors> call, @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<List<Sensors>> call, @NonNull Throwable t) {
                 error.setValue(t);
             }
         });
     }
 }
+

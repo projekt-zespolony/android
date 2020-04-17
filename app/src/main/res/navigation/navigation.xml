@@ -57,9 +57,9 @@
         tools:layout="@layout/fragment_measurements" />
     <fragment
         android:id="@+id/secondFragment"
-        android:name="com.projekt_zespolowy.microclimateanalysisclient.view.SecondFragment"
+        android:name="com.projekt_zespolowy.microclimateanalysisclient.view.MeasurementsFromDayFragment"
         android:label="SecondFragment"
-        tools:layout="@layout/fragment_second" />
+        tools:layout="@layout/fragment_measurements_from_day" />
     <fragment
         android:id="@+id/thirdFragment"
         android:name="com.projekt_zespolowy.microclimateanalysisclient.view.ThirdFragment"
