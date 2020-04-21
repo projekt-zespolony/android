@@ -39,6 +39,11 @@ public class MainFragment extends Fragment {
         binding.imageButton4.setOnClickListener(v -> {
             navigation.navigate(R.id.action_mainFragment_to_fourthFragment);
         });
+
+        binding.imageButton1.setImageResource(R.drawable.ic_measurements);
+        binding.imageButton2.setImageResource(R.drawable.ic_measurements_list);
+        binding.imageButton3.setImageResource(R.drawable.ic_measurements_graph);
+        binding.imageButton4.setImageResource(R.drawable.ic_optimization);
         return binding.getRoot();
     }
 
