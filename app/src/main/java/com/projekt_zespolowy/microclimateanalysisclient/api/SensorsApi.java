@@ -9,7 +9,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface SensorsApi {
-    String BASE_URL = "https://projekt-zespolowy.pl";
+    String BASE_URL = "http://projekt-zespolowy.pl";
 
     @GET("/sensors")
     Call<Sensors> sensors();
