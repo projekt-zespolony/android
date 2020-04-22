@@ -76,7 +76,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/imageButton2"
-                android:text="@string/title_measurements_from_day" />
+                android:text="@string/title_measurements_history" />
 
             <ImageButton
                 android:id="@+id/imageButton3"
@@ -102,7 +102,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageButton3"
-                android:text="@string/title_third" />
+                android:text="@string/title_measurements_graphs" />
 
             <ImageButton
                 android:id="@+id/imageButton4"
@@ -128,7 +128,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/guideline2"
                 app:layout_constraintTop_toBottomOf="@+id/imageButton4"
-                android:text="@string/title_fourth" />
+                android:text="@string/title_optimization" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>

@@ -11,15 +11,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.projekt_zespolowy.microclimateanalysisclient.R;
-import com.projekt_zespolowy.microclimateanalysisclient.databinding.FragmentMeasurementsFromDayBinding;
+import com.projekt_zespolowy.microclimateanalysisclient.databinding.FragmentMeasurementsHistoryBinding;
 import com.projekt_zespolowy.microclimateanalysisclient.viewmodel.MeasurementsFromDayViewModel;
 
-public class MeasurementsFromDayFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
-    private static final String TAG = MeasurementsFromDayFragment.class.getName();
+public class MeasurementsHistoryFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+    private static final String TAG = MeasurementsHistoryFragment.class.getName();
 
-    private FragmentMeasurementsFromDayBinding binding;
+    private FragmentMeasurementsHistoryBinding binding;
     private MeasurementsFromDayViewModel viewModel;
 
     @Override
@@ -29,7 +28,7 @@ public class MeasurementsFromDayFragment extends Fragment implements SwipeRefres
             binding.swipeRefresh.setRefreshing(false);
             binding.countTextView.setText(String.valueOf(sensors.size()));
         });
-        binding = FragmentMeasurementsFromDayBinding.inflate(inflater);
+        binding = FragmentMeasurementsHistoryBinding.inflate(inflater);
         binding.swipeRefresh.setColorSchemeResources(R.color.accent);
         binding.swipeRefresh.setOnRefreshListener(this);
         return binding.getRoot();
@@ -37,7 +36,7 @@ public class MeasurementsFromDayFragment extends Fragment implements SwipeRefres
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        getActivity().setTitle(R.string.title_measurements_from_day);
+        getActivity().setTitle(R.string.title_measurements_history);
         update();
     }
 

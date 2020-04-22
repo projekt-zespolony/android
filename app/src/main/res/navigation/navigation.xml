@@ -57,17 +57,17 @@
         tools:layout="@layout/fragment_measurements" />
     <fragment
         android:id="@+id/secondFragment"
-        android:name="com.projekt_zespolowy.microclimateanalysisclient.view.MeasurementsFromDayFragment"
+        android:name="com.projekt_zespolowy.microclimateanalysisclient.view.MeasurementsHistoryFragment"
         android:label="SecondFragment"
-        tools:layout="@layout/fragment_measurements_from_day" />
+        tools:layout="@layout/fragment_measurements_history" />
     <fragment
         android:id="@+id/thirdFragment"
-        android:name="com.projekt_zespolowy.microclimateanalysisclient.view.ThirdFragment"
+        android:name="com.projekt_zespolowy.microclimateanalysisclient.view.MeasurementsGraphsFragment"
         android:label="ThirdFragment"
-        tools:layout="@layout/fragment_third" />
+        tools:layout="@layout/fragment_measurements_graphs" />
     <fragment
         android:id="@+id/fourthFragment"
-        android:name="com.projekt_zespolowy.microclimateanalysisclient.view.FourthFragment"
+        android:name="com.projekt_zespolowy.microclimateanalysisclient.view.OptimizationFragment"
         android:label="FourthFragment"
-        tools:layout="@layout/fragment_fourth" />
+        tools:layout="@layout/fragment_optimization" />
 </navigation>
