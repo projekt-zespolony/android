@@ -39,7 +39,8 @@ public class MeasurementsGraphsFragment extends Fragment {
     private TabLayout tabLayout;
 
     private LineChart lineChart;
-    LineData lineData;
+    private LineData lineData;
+    private boolean firstDraw = false;
 
     // Temperature
     private List<Entry> entriesTemp = new ArrayList<>();
@@ -118,8 +119,8 @@ public class MeasurementsGraphsFragment extends Fragment {
             @Override
             public void onChanged(List<Sensors> sensors) {
                 //logSensorsData(sensors);
-                drawTemperatureGraph(sensors);
-                fetchDataForOtherGraphs(sensors);
+                fetchDataForGraphs(sensors);
+                firstDrawOfTemperatureGraph(sensors);
             }
         });
 
@@ -148,7 +149,6 @@ public class MeasurementsGraphsFragment extends Fragment {
         lineChart.getDescription().setText("Temperature from last 24 hours");
         lineChart.getDescription().setTextSize(16f);
         lineChart.getDescription().setTextColor(Color.WHITE);
-        //lineChart.setBackgroundColor(Color.WHITE);
         lineChart.setGridBackgroundColor(Color.WHITE);
         lineChart.setDrawBorders(true);
         lineChart.setBorderColor(Color.WHITE);
@@ -157,10 +157,19 @@ public class MeasurementsGraphsFragment extends Fragment {
         lineChart.fitScreen();
     }
 
-    private void drawTemperatureGraph(List<Sensors> sensors) {
-        lineChart.clear();
-        entriesTemp.clear();
+    private void firstDrawOfTemperatureGraph(List<Sensors> sensors) {
+        if (firstDraw)
+            return;
 
+        LineData lineData = new LineData(dataSetTemp);
+        lineChart.setData(lineData);
+        lineChart.invalidate();
+        firstDraw = true;
+    }
+
+    private void fetchDataForGraphs(List<Sensors> sensors) {
+        // Temperature
+        entriesTemp.clear();
         for (Sensors s : sensors) {
             entriesTemp.add(new Entry(s.getTimestamp(), s.getTemperature()));
         }
@@ -169,12 +178,6 @@ public class MeasurementsGraphsFragment extends Fragment {
         dataSetTemp.setValueTextColor(Color.BLACK);
         dataSetTemp.setDrawCircles(false);
 
-        LineData lineData = new LineData(dataSetTemp);
-        lineChart.setData(lineData);
-        lineChart.invalidate();
-    }
-
-    private void fetchDataForOtherGraphs(List<Sensors> sensors) {
         // Humidity
         entriesHum.clear();
         for (Sensors s : sensors) {
@@ -204,6 +207,5 @@ public class MeasurementsGraphsFragment extends Fragment {
         dataSetGas.setColor(Color.YELLOW);
         dataSetGas.setValueTextColor(Color.BLACK);
         dataSetGas.setDrawCircles(false);
-
     }
 }
