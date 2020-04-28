@@ -111,7 +111,7 @@ public class MeasurementsGraphsFragment extends Fragment {
         tabLayout = binding.tabs;
         tabLayout.addOnTabSelectedListener(new TabSelectedListener());
 
-        initTemperatureGraph();
+        initGraph();
 
         viewModel = new ViewModelProvider(this).get(MeasurementsFromDayViewModel.class);
         viewModel.getSensorsHours().observe(getViewLifecycleOwner(), new Observer<List<Sensors>>() {
@@ -143,11 +143,17 @@ public class MeasurementsGraphsFragment extends Fragment {
         }
     }
 
-    private void initTemperatureGraph() {
+    private void initGraph() {
         lineChart = binding.lineChart;
         lineChart.getDescription().setText("Temperature from last 24 hours");
-        lineChart.getDescription().setTextSize(12);
-        lineChart.setBackgroundColor(Color.WHITE);
+        lineChart.getDescription().setTextSize(16f);
+        lineChart.getDescription().setTextColor(Color.WHITE);
+        //lineChart.setBackgroundColor(Color.WHITE);
+        lineChart.setGridBackgroundColor(Color.WHITE);
+        lineChart.setDrawBorders(true);
+        lineChart.setBorderColor(Color.WHITE);
+        lineChart.getAxisLeft().setTextColor(Color.WHITE);
+        lineChart.getAxisRight().setTextColor(Color.WHITE);
         lineChart.fitScreen();
     }
 
@@ -158,7 +164,7 @@ public class MeasurementsGraphsFragment extends Fragment {
         for (Sensors s : sensors) {
             entriesTemp.add(new Entry(s.getTimestamp(), s.getTemperature()));
         }
-        dataSetTemp = new LineDataSet(entriesTemp, "Temperature");
+        dataSetTemp = new LineDataSet(entriesTemp, "Temperature [\u00B0 C]");
         dataSetTemp.setColor(Color.RED);
         dataSetTemp.setValueTextColor(Color.BLACK);
         dataSetTemp.setDrawCircles(false);
@@ -174,7 +180,7 @@ public class MeasurementsGraphsFragment extends Fragment {
         for (Sensors s : sensors) {
             entriesHum.add(new Entry(s.getTimestamp(), s.getHumidity()));
         }
-        dataSetHum = new LineDataSet(entriesHum, "Humidity");
+        dataSetHum = new LineDataSet(entriesHum, "Humidity [%]");
         dataSetHum.setColor(Color.BLUE);
         dataSetHum.setValueTextColor(Color.BLACK);
         dataSetHum.setDrawCircles(false);
@@ -184,8 +190,8 @@ public class MeasurementsGraphsFragment extends Fragment {
         for (Sensors s : sensors) {
             entriesPre.add(new Entry(s.getTimestamp(), s.getPressure()));
         }
-        dataSetPre = new LineDataSet(entriesPre, "Pressure");
-        dataSetPre.setColor(Color.DKGRAY);
+        dataSetPre = new LineDataSet(entriesPre, "Pressure [hPa]");
+        dataSetPre.setColor(Color.LTGRAY);
         dataSetPre.setValueTextColor(Color.BLACK);
         dataSetPre.setDrawCircles(false);
 
@@ -194,7 +200,7 @@ public class MeasurementsGraphsFragment extends Fragment {
         for (Sensors s : sensors) {
             entriesGas.add(new Entry(s.getTimestamp(), s.getGas()));
         }
-        dataSetGas = new LineDataSet(entriesGas, "Gas");
+        dataSetGas = new LineDataSet(entriesGas, "Gas [kOhm]");
         dataSetGas.setColor(Color.YELLOW);
         dataSetGas.setValueTextColor(Color.BLACK);
         dataSetGas.setDrawCircles(false);
