@@ -7,95 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".view.MeasurementsFragment">
 
-    <TextView
-        android:id="@+id/textViewGasValue"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:textAllCaps="false"
-        android:textSize="@dimen/measurements_value_text_size"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewGas"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/barrier"
-        app:layout_constraintTop_toTopOf="@+id/textViewGas"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <TextView
-        android:id="@+id/textViewPeopleInTheRoomValue"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:textAllCaps="false"
-        android:textSize="@dimen/measurements_value_text_size"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewPeopleInTheRoom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/barrier"
-        app:layout_constraintTop_toTopOf="@+id/textViewPeopleInTheRoom" />
-
-    <TextView
-        android:id="@+id/textViewWindowsOpenedValue"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:textAllCaps="false"
-        android:textSize="@dimen/measurements_value_text_size"
-        app:layout_constraintBottom_toBottomOf="@+id/textViewWindowsOpened"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@id/barrier"
-        app:layout_constraintTop_toTopOf="@+id/textViewWindowsOpened" />
-
-    <TextView
-        android:id="@+id/textViewGas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/measurement_gas"
-        android:textAlignment="viewStart"
-        android:textSize="@dimen/measurements_key_text_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPressure" />
-
-    <TextView
-        android:id="@+id/textViewPeopleInTheRoom"
-        android:layout_width="85dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/measurement_peopleInTheRoom"
-        android:textAlignment="viewStart"
-        android:textSize="@dimen/measurements_key_text_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewGas" />
-
-    <TextView
-        android:id="@+id/textViewWindowsOpened"
-        android:layout_width="92dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/measurement_windowsOpened"
-        android:textAlignment="viewStart"
-        android:textSize="@dimen/measurements_key_text_size"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPeopleInTheRoom" />
-
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="end"
-        app:constraint_referenced_ids="textViewTemperature, textViewHumidity, textViewPressure, textViewGas"
-        tools:layout_editor_absoluteX="411dp" />
+        app:constraint_referenced_ids="textViewTemperature,
+        textViewHumidity,
+        textViewPressure,
+        textViewGas,
+        textViewPeopleInTheRoom,
+        textViewWindowsOpened" />
 
     <TextView
         android:id="@+id/textViewTemperature"
@@ -172,5 +94,87 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/barrier"
         app:layout_constraintTop_toTopOf="@+id/textViewPressure" />
+
+    <TextView
+        android:id="@+id/textViewGas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/measurement_gas"
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/measurements_key_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPressure" />
+
+    <TextView
+        android:id="@+id/textViewGasValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:textAllCaps="false"
+        android:textSize="@dimen/measurements_value_text_size"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewGas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/barrier"
+        app:layout_constraintTop_toTopOf="@+id/textViewGas"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textViewPeopleInTheRoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/measurement_peopleInTheRoom"
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/measurements_key_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGas" />
+
+    <TextView
+        android:id="@+id/textViewPeopleInTheRoomValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:textAllCaps="false"
+        android:textSize="@dimen/measurements_value_text_size"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPeopleInTheRoom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/barrier"
+        app:layout_constraintTop_toTopOf="@+id/textViewPeopleInTheRoom" />
+
+    <TextView
+        android:id="@+id/textViewWindowsOpened"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/measurement_windowsOpened"
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/measurements_key_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPeopleInTheRoom" />
+
+    <TextView
+        android:id="@+id/textViewWindowsOpenedValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:textAllCaps="false"
+        android:textSize="@dimen/measurements_value_text_size"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewWindowsOpened"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/barrier"
+        app:layout_constraintTop_toTopOf="@+id/textViewWindowsOpened" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
