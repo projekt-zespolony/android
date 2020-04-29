@@ -74,48 +74,56 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
                 {
                     TableRow tableRow = new TableRow(getContext());
 
+                    TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f);
+                    params.setMargins(0, 0, 2, 2);
+
                     // Time Column
                     TextView textViewId = new TextView(getContext());
-                    textViewId.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f));
+                    textViewId.setLayoutParams(params);
                     textViewId.setText("Time");
                     textViewId.setTextColor(getResources().getColor(R.color.foreground_darker));
                     textViewId.setGravity(Gravity.CENTER);
+                    textViewId.setBackgroundColor(getResources().getColor(R.color.background_darker));
 
                     tableRow.addView(textViewId);
 
                     // Temperature Column
                     TextView textViewTemp = new TextView(getContext());
-                    textViewTemp.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f));
+                    textViewTemp.setLayoutParams(params);
                     textViewTemp.setText(((Float.toString(sensorsList.get(i).getTemperature()))));
                     textViewTemp.setTextColor(getResources().getColor(R.color.foreground_darker));
                     textViewTemp.setGravity(Gravity.CENTER);
+                    textViewTemp.setBackgroundColor(getResources().getColor(R.color.background_darker));
 
                     tableRow.addView(textViewTemp);
 
                     // Air Pressure Column
                     TextView textViewPressure = new TextView(getContext());
-                    textViewPressure.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f));
+                    textViewPressure.setLayoutParams(params);
                     textViewPressure.setText(Float.toString(sensorsList.get(i).getPressure()));
                     textViewPressure.setTextColor(getResources().getColor(R.color.foreground_darker));
                     textViewPressure.setGravity(Gravity.CENTER);
+                    textViewPressure.setBackgroundColor(getResources().getColor(R.color.background_darker));
 
                     tableRow.addView(textViewPressure);
 
                     // Humidity Column
                     TextView textViewHumidity = new TextView(getContext());
-                    textViewHumidity.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f));
+                    textViewHumidity.setLayoutParams(params);
                     textViewHumidity.setText(Float.toString(sensorsList.get(i).getHumidity()));
                     textViewHumidity.setTextColor(getResources().getColor(R.color.foreground_darker));
                     textViewHumidity.setGravity(Gravity.CENTER);
+                    textViewHumidity.setBackgroundColor(getResources().getColor(R.color.background_darker));
 
                     tableRow.addView(textViewHumidity);
 
                     // Air Quality Column
                     TextView textViewAirQuality = new TextView(getContext());
-                    textViewAirQuality.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f));
+                    textViewAirQuality.setLayoutParams(params);
                     textViewAirQuality.setText(("Air quality"));
                     textViewAirQuality.setTextColor(getResources().getColor(R.color.foreground_darker));
                     textViewAirQuality.setGravity(Gravity.CENTER);
+                    textViewAirQuality.setBackgroundColor(getResources().getColor(R.color.background_darker));
 
                     tableRow.addView(textViewAirQuality);
 
