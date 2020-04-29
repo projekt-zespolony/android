@@ -70,7 +70,7 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
         if(initialized==false || update==true)
         {
             dataTable.removeAllViews();
-            
+
             createColumns();
 
             List<Sensors> sensorsList= viewModel.getSensorsHours().getValue();
@@ -82,8 +82,17 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
                     Calendar calendar = Calendar.getInstance();
                     calendar.setTimeInMillis(sensorsList.get(i).getTimestamp()*1000);
 
+                    // Add missing 0's if needed
+                    String time;
 
-                    String time = calendar.get(Calendar.HOUR)+ ":" + calendar.get(Calendar.MINUTE);
+                    if (calendar.get(Calendar.HOUR_OF_DAY) < 10)
+                        time = "0" + calendar.get(Calendar.HOUR_OF_DAY) + ":";
+                    else time = calendar.get(Calendar.HOUR_OF_DAY) + ":";
+
+                    if (calendar.get(Calendar.MINUTE) < 10)
+                        time += "0" + calendar.get(Calendar.MINUTE);
+                    else time += calendar.get(Calendar.MINUTE);
+
                     String temperature = Float.toString(sensorsList.get(i).getTemperature());
                     String airPressure = Float.toString(sensorsList.get(i).getPressure());
                     String humidity = Float.toString(sensorsList.get(i).getHumidity());
@@ -169,6 +178,7 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
         dataTable.addView(tableRow);
     }
 
+    // Kod się powtarza 2 razy, poprawię w przyszłości
     private void addRow(String time, String temperature, String airPressure, String humidity, String airQuality) {
 
         TableRow tableRow = new TableRow(getContext());
