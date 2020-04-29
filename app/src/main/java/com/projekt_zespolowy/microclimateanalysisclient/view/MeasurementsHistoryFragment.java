@@ -33,6 +33,7 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
     private MeasurementsHistoryViewModel viewModel;
     private TableLayout dataTable;
     private boolean initialized = false;
+    private boolean update = false;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -60,15 +61,18 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle(R.string.title_measurements_history);
-        createColumns();
         binding.swipeRefresh.setRefreshing(true);
         update();
     }
 
     private void initializeData()
     {
-        if(initialized==false)
+        if(initialized==false || update==true)
         {
+            dataTable.removeAllViews();
+            
+            createColumns();
+
             List<Sensors> sensorsList= viewModel.getSensorsHours().getValue();
 
             if(sensorsList!=null)
@@ -102,6 +106,7 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
     }
 
     private void update() {
+        update=true;
         viewModel.updateSensorsHours(24);
     }
 
