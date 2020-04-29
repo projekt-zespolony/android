@@ -6,7 +6,6 @@ package com.projekt_zespolowy.microclimateanalysisclient.view;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.FrameLayout;
-        import android.widget.ListView;
         import android.widget.TableLayout;
         import android.widget.TableRow;
         import android.widget.TextView;
@@ -23,7 +22,6 @@ package com.projekt_zespolowy.microclimateanalysisclient.view;
         import com.projekt_zespolowy.microclimateanalysisclient.viewmodel.MeasurementsHistoryViewModel;
 
         import java.util.Calendar;
-        import java.util.Date;
         import java.util.List;
 
 public class MeasurementsHistoryFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
@@ -105,8 +103,9 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
                     else if(sensorsList.get(i).getGas()<300) airQuality="Worse";
                     else if(sensorsList.get(i).getGas()<500) airQuality="Very Bad";
                     else airQuality="";
+                    
 
-                    addRow(time,temperature,airPressure, humidity, airQuality);
+                    dataTable.addView(createRow(time,temperature,airPressure, humidity, airQuality));
                 }
 
             binding.swipeRefresh.setRefreshing(false);
@@ -178,8 +177,8 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
         dataTable.addView(tableRow);
     }
 
-    // Kod się powtarza 2 razy, poprawię w przyszłości
-    private void addRow(String time, String temperature, String airPressure, String humidity, String airQuality) {
+
+    private TableRow createRow(String time, String temperature, String airPressure, String humidity, String airQuality) {
 
         TableRow tableRow = new TableRow(getContext());
 
@@ -237,6 +236,6 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
         tableRow.addView(textViewAirQuality);
 
 
-        dataTable.addView(tableRow);
+        return tableRow;
     }
 }
