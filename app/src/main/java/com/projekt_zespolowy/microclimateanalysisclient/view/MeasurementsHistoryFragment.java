@@ -72,7 +72,7 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
             List<Sensors> sensorsList= viewModel.getSensorsHours().getValue();
 
             if(sensorsList!=null)
-                for(int i=0;i<sensorsList.size();i++)
+                for(int i=sensorsList.size()-1;i>-1;i--)
                 {
                     TableRow tableRow = new TableRow(getContext());
 
