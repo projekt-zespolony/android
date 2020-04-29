@@ -6,6 +6,7 @@ package com.projekt_zespolowy.microclimateanalysisclient.view;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.FrameLayout;
+        import android.widget.ListView;
         import android.widget.TableLayout;
         import android.widget.TableRow;
         import android.widget.TextView;
@@ -18,7 +19,10 @@ package com.projekt_zespolowy.microclimateanalysisclient.view;
 
         import com.projekt_zespolowy.microclimateanalysisclient.R;
         import com.projekt_zespolowy.microclimateanalysisclient.databinding.FragmentMeasurementsHistoryBinding;
+        import com.projekt_zespolowy.microclimateanalysisclient.model.Sensors;
         import com.projekt_zespolowy.microclimateanalysisclient.viewmodel.MeasurementsHistoryViewModel;
+
+        import java.util.List;
 
 public class MeasurementsHistoryFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private static final String TAG = MeasurementsHistoryFragment.class.getName();
@@ -26,17 +30,28 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
     private FragmentMeasurementsHistoryBinding binding;
     private MeasurementsHistoryViewModel viewModel;
     private TableLayout dataTable;
+    private boolean initialized = false;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(MeasurementsHistoryViewModel.class);
 
+        viewModel.getSensorsHours().observe(getViewLifecycleOwner(), sensors -> {
+            binding.swipeRefresh.setRefreshing(false);
+            initializeData();
+        });
+
         binding = FragmentMeasurementsHistoryBinding.inflate(inflater);
+        binding.swipeRefresh.setColorSchemeResources(R.color.accent);
+        binding.swipeRefresh.setOnRefreshListener(this);
+
         dataTable = binding.DataTable;
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         params.setMargins(15, 10, 15, 10);
         dataTable.setLayoutParams(params);
         dataTable.setBackgroundColor(getResources().getColor(R.color.table_background));
+
+
         return binding.getRoot();
     }
 
@@ -44,13 +59,79 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle(R.string.title_measurements_history);
         createColumns();
+        binding.swipeRefresh.setRefreshing(true);
         update();
     }
 
-    private void update() {
+    private void initializeData()
+    {
+        if(initialized==false)
+        {
+            List<Sensors> sensorsList= viewModel.getSensorsHours().getValue();
+
+            if(sensorsList!=null)
+                for(int i=0;i<sensorsList.size();i++)
+                {
+                    TableRow tableRow = new TableRow(getContext());
+
+                    // Time Column
+                    TextView textViewId = new TextView(getContext());
+                    textViewId.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f));
+                    textViewId.setText("Time");
+                    textViewId.setTextColor(getResources().getColor(R.color.foreground_darker));
+                    textViewId.setGravity(Gravity.CENTER);
+
+                    tableRow.addView(textViewId);
+
+                    // Temperature Column
+                    TextView textViewTemp = new TextView(getContext());
+                    textViewTemp.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f));
+                    textViewTemp.setText(((Float.toString(sensorsList.get(i).getTemperature()))));
+                    textViewTemp.setTextColor(getResources().getColor(R.color.foreground_darker));
+                    textViewTemp.setGravity(Gravity.CENTER);
+
+                    tableRow.addView(textViewTemp);
+
+                    // Air Pressure Column
+                    TextView textViewPressure = new TextView(getContext());
+                    textViewPressure.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f));
+                    textViewPressure.setText(Float.toString(sensorsList.get(i).getPressure()));
+                    textViewPressure.setTextColor(getResources().getColor(R.color.foreground_darker));
+                    textViewPressure.setGravity(Gravity.CENTER);
+
+                    tableRow.addView(textViewPressure);
+
+                    // Humidity Column
+                    TextView textViewHumidity = new TextView(getContext());
+                    textViewHumidity.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f));
+                    textViewHumidity.setText(Float.toString(sensorsList.get(i).getHumidity()));
+                    textViewHumidity.setTextColor(getResources().getColor(R.color.foreground_darker));
+                    textViewHumidity.setGravity(Gravity.CENTER);
+
+                    tableRow.addView(textViewHumidity);
+
+                    // Air Quality Column
+                    TextView textViewAirQuality = new TextView(getContext());
+                    textViewAirQuality.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f));
+                    textViewAirQuality.setText(("Air quality"));
+                    textViewAirQuality.setTextColor(getResources().getColor(R.color.foreground_darker));
+                    textViewAirQuality.setGravity(Gravity.CENTER);
+
+                    tableRow.addView(textViewAirQuality);
 
 
+                    dataTable.addView(tableRow);
+                }
+
+            binding.swipeRefresh.setRefreshing(false);
+            initialized=true;
+        }
     }
+
+    private void update() {
+        viewModel.updateSensorsHours(24);
+    }
+
 
     @Override
     public void onRefresh() {
