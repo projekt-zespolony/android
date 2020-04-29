@@ -85,15 +85,15 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
 
 
                     // Time Column
-                    TextView textViewId = new TextView(getContext());
-                    textViewId.setLayoutParams(params);
-                    textViewId.setText(calendar.get(Calendar.HOUR)+
+                    TextView textViewTime = new TextView(getContext());
+                    textViewTime.setLayoutParams(params);
+                    textViewTime.setText(calendar.get(Calendar.HOUR)+
                             ":" + calendar.get(Calendar.MINUTE));
-                    textViewId.setTextColor(getResources().getColor(R.color.foreground_darker));
-                    textViewId.setGravity(Gravity.CENTER);
-                    textViewId.setBackgroundColor(getResources().getColor(R.color.background_darker));
+                    textViewTime.setTextColor(getResources().getColor(R.color.foreground_darker));
+                    textViewTime.setGravity(Gravity.CENTER);
+                    textViewTime.setBackgroundColor(getResources().getColor(R.color.background_darker));
 
-                    tableRow.addView(textViewId);
+                    tableRow.addView(textViewTime);
 
                     // Temperature Column
                     TextView textViewTemp = new TextView(getContext());
@@ -159,13 +159,13 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
         TableRow tableRow = new TableRow(getContext());
 
         // Time Column
-        TextView textViewId = new TextView(getContext());
-        textViewId.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f));
-        textViewId.setText(("Time"));
-        textViewId.setTextColor(getResources().getColor(R.color.foreground));
-        textViewId.setGravity(Gravity.CENTER);
+        TextView textViewTime = new TextView(getContext());
+        textViewTime.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f));
+        textViewTime.setText(("Time"));
+        textViewTime.setTextColor(getResources().getColor(R.color.foreground));
+        textViewTime.setGravity(Gravity.CENTER);
 
-        tableRow.addView(textViewId);
+        tableRow.addView(textViewTime);
 
         // Temperature Column
         TextView textViewTemp = new TextView(getContext());
