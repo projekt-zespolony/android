@@ -22,6 +22,8 @@ package com.projekt_zespolowy.microclimateanalysisclient.view;
         import com.projekt_zespolowy.microclimateanalysisclient.model.Sensors;
         import com.projekt_zespolowy.microclimateanalysisclient.viewmodel.MeasurementsHistoryViewModel;
 
+        import java.util.Calendar;
+        import java.util.Date;
         import java.util.List;
 
 public class MeasurementsHistoryFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
@@ -77,10 +79,16 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
                     TableRow.LayoutParams params = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT, 1.0f);
                     params.setMargins(0, 0, 2, 2);
 
+                    // Convert timestamp to date
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.setTimeInMillis(sensorsList.get(i).getTimestamp()*1000);
+
+
                     // Time Column
                     TextView textViewId = new TextView(getContext());
                     textViewId.setLayoutParams(params);
-                    textViewId.setText("Time");
+                    textViewId.setText(calendar.get(Calendar.HOUR)+
+                            ":" + calendar.get(Calendar.MINUTE));
                     textViewId.setTextColor(getResources().getColor(R.color.foreground_darker));
                     textViewId.setGravity(Gravity.CENTER);
                     textViewId.setBackgroundColor(getResources().getColor(R.color.background_darker));
