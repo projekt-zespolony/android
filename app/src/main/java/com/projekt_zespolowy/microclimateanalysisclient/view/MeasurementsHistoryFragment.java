@@ -78,12 +78,22 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
                     Calendar calendar = Calendar.getInstance();
                     calendar.setTimeInMillis(sensorsList.get(i).getTimestamp()*1000);
 
+
                     String time = calendar.get(Calendar.HOUR)+ ":" + calendar.get(Calendar.MINUTE);
                     String temperature = Float.toString(sensorsList.get(i).getTemperature());
                     String airPressure = Float.toString(sensorsList.get(i).getPressure());
                     String humidity = Float.toString(sensorsList.get(i).getHumidity());
+                    String airQuality;
 
-                    addRow(time,temperature,airPressure, humidity, "airQuality");
+                    if(sensorsList.get(i).getGas()<50) airQuality="Good";
+                    else if(sensorsList.get(i).getGas()<100) airQuality="Average";
+                    else if(sensorsList.get(i).getGas()<150) airQuality="Little Bad";
+                    else if(sensorsList.get(i).getGas()<200) airQuality="Bad";
+                    else if(sensorsList.get(i).getGas()<300) airQuality="Worse";
+                    else if(sensorsList.get(i).getGas()<500) airQuality="Very Bad";
+                    else airQuality="";
+
+                    addRow(time,temperature,airPressure, humidity, airQuality);
                 }
 
             binding.swipeRefresh.setRefreshing(false);
