@@ -21,7 +21,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.projekt_zespolowy.microclimateanalysisclient.R;
 import com.projekt_zespolowy.microclimateanalysisclient.databinding.FragmentMeasurementsGraphsBinding;
 import com.projekt_zespolowy.microclimateanalysisclient.model.Sensors;
-import com.projekt_zespolowy.microclimateanalysisclient.viewmodel.MeasurementsFromDayViewModel;
+import com.projekt_zespolowy.microclimateanalysisclient.viewmodel.MeasurementsHistoryViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ import java.util.List;
 public class MeasurementsGraphsFragment extends Fragment {
 
     private FragmentMeasurementsGraphsBinding binding;
-    private MeasurementsFromDayViewModel viewModel;
+    private MeasurementsHistoryViewModel viewModel;
     private TabLayout tabLayout;
 
     private LineChart lineChart;
@@ -114,7 +114,7 @@ public class MeasurementsGraphsFragment extends Fragment {
 
         initGraph();
 
-        viewModel = new ViewModelProvider(this).get(MeasurementsFromDayViewModel.class);
+        viewModel = new ViewModelProvider(this).get(MeasurementsHistoryViewModel.class);
         viewModel.getSensorsHours().observe(getViewLifecycleOwner(), new Observer<List<Sensors>>() {
             @Override
             public void onChanged(List<Sensors> sensors) {

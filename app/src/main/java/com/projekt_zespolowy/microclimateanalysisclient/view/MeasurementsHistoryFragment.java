@@ -6,34 +6,30 @@ package com.projekt_zespolowy.microclimateanalysisclient.view;
         import android.view.View;
         import android.view.ViewGroup;
         import android.widget.FrameLayout;
-        import android.widget.LinearLayout;
         import android.widget.TableLayout;
         import android.widget.TableRow;
         import android.widget.TextView;
 
-        import androidx.annotation.ColorRes;
         import androidx.annotation.NonNull;
         import androidx.annotation.Nullable;
         import androidx.fragment.app.Fragment;
         import androidx.lifecycle.ViewModelProvider;
         import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-        import com.google.android.material.tabs.TabLayout;
-        import com.projekt_zespolowy.microclimateanalysisclient.MainActivity;
         import com.projekt_zespolowy.microclimateanalysisclient.R;
         import com.projekt_zespolowy.microclimateanalysisclient.databinding.FragmentMeasurementsHistoryBinding;
-        import com.projekt_zespolowy.microclimateanalysisclient.viewmodel.MeasurementsFromDayViewModel;
+        import com.projekt_zespolowy.microclimateanalysisclient.viewmodel.MeasurementsHistoryViewModel;
 
 public class MeasurementsHistoryFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private static final String TAG = MeasurementsHistoryFragment.class.getName();
 
     private FragmentMeasurementsHistoryBinding binding;
-    private MeasurementsFromDayViewModel viewModel;
+    private MeasurementsHistoryViewModel viewModel;
     private TableLayout dataTable;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        viewModel = new ViewModelProvider(this).get(MeasurementsFromDayViewModel.class);
+        viewModel = new ViewModelProvider(this).get(MeasurementsHistoryViewModel.class);
 
         binding = FragmentMeasurementsHistoryBinding.inflate(inflater);
         dataTable = binding.DataTable;
