@@ -7,12 +7,39 @@
     android:layout_height="match_parent"
     tools:context=".view.MeasurementsFragment">
 
+    <TextView
+        android:id="@+id/textViewTimestampValue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:textSize="@dimen/measurements_value_text_size"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTimestamp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/barrier"
+        app:layout_constraintTop_toTopOf="@+id/textViewTimestamp" />
+
+    <TextView
+        android:id="@+id/textViewTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/measurement_timestamp"
+        android:textAlignment="viewStart"
+        android:textSize="@dimen/measurements_key_text_size"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/barrier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="end"
-        app:constraint_referenced_ids="textViewTemperature,
+        app:constraint_referenced_ids="
+        textViewTimestamp,
+        textViewTemperature,
         textViewHumidity,
         textViewPressure,
         textViewGas,
@@ -24,13 +51,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="@string/measurement_temperature"
         android:textAlignment="viewStart"
         android:textSize="@dimen/measurements_key_text_size"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewTimestamp" />
 
     <TextView
         android:id="@+id/textViewTemperatureValue"

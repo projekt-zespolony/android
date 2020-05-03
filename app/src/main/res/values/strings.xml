@@ -2,6 +2,7 @@
     <string name="app_name">Client</string>
 
     <!-- Measurements names -->
+    <string name="measurement_timestamp">Timestamp</string>
     <string name="measurement_temperature">Temperature</string>
     <string name="measurement_humidity">Humidity</string>
     <string name="measurement_pressure">Pressure</string>

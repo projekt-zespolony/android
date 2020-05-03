@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.projekt_zespolowy.microclimateanalysisclient.R;
 import com.projekt_zespolowy.microclimateanalysisclient.databinding.FragmentMeasurementsBinding;
 import com.projekt_zespolowy.microclimateanalysisclient.viewmodel.MeasurementsViewModel;
+
+import java.util.Calendar;
 
 public class MeasurementsFragment extends Fragment implements Runnable {
     private static final String TAG = MeasurementsFragment.class.getName();
@@ -30,6 +33,7 @@ public class MeasurementsFragment extends Fragment implements Runnable {
         viewModel = new ViewModelProvider(this).get(MeasurementsViewModel.class);
         viewModel.getSensors().observe(getViewLifecycleOwner(), sensors -> {
             // Set sensors readings values
+            binding.textViewTimestampValue.setText(getTimestampDate(sensors.getTimestamp()));
             binding.textViewTemperatureValue.setText(String.valueOf(sensors.getTemperature()));
             binding.textViewHumidityValue.setText(String.valueOf(sensors.getHumidity()));
             binding.textViewPressureValue.setText(String.valueOf(sensors.getPressure()));
@@ -66,6 +70,12 @@ public class MeasurementsFragment extends Fragment implements Runnable {
     public void onPause() {
         super.onPause();
         handler.removeCallbacks(this);
+    }
+
+    private String getTimestampDate(long timestamp) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTimeInMillis(timestamp * 1000);
+        return DateFormat.format("HH:mm:ss dd-MM-yyyy", cal).toString();
     }
 
     private int getTemperatureColor(float temperature) {
