@@ -171,7 +171,8 @@ public class MeasurementsGraphsFragment extends Fragment {
         // Temperature
         entriesTemp.clear();
         for (Sensors s : sensors) {
-            entriesTemp.add(new Entry(s.getTimestamp(), s.getTemperature()));
+            if(s.getTemperature()!=0)
+                entriesTemp.add(new Entry(s.getTimestamp(), s.getTemperature()));
         }
         dataSetTemp = new LineDataSet(entriesTemp, "Temperature [\u00B0 C]");
         dataSetTemp.setColor(Color.RED);
@@ -181,7 +182,8 @@ public class MeasurementsGraphsFragment extends Fragment {
         // Humidity
         entriesHum.clear();
         for (Sensors s : sensors) {
-            entriesHum.add(new Entry(s.getTimestamp(), s.getHumidity()));
+            if(s.getHumidity()!=0)
+                entriesHum.add(new Entry(s.getTimestamp(), s.getHumidity()));
         }
         dataSetHum = new LineDataSet(entriesHum, "Humidity [%]");
         dataSetHum.setColor(Color.BLUE);
@@ -191,7 +193,8 @@ public class MeasurementsGraphsFragment extends Fragment {
         // Pressure
         entriesPre.clear();
         for (Sensors s : sensors) {
-            entriesPre.add(new Entry(s.getTimestamp(), s.getPressure()));
+            if(s.getPressure()!=0)
+                entriesPre.add(new Entry(s.getTimestamp(), s.getPressure()));
         }
         dataSetPre = new LineDataSet(entriesPre, "Pressure [hPa]");
         dataSetPre.setColor(Color.LTGRAY);
@@ -201,7 +204,8 @@ public class MeasurementsGraphsFragment extends Fragment {
         // Gas
         entriesGas.clear();
         for (Sensors s : sensors) {
-            entriesGas.add(new Entry(s.getTimestamp(), s.getGas()));
+            if(s.getGas()!=0)
+                entriesGas.add(new Entry(s.getTimestamp(), s.getGas()));
         }
         dataSetGas = new LineDataSet(entriesGas, "Gas [kOhm]");
         dataSetGas.setColor(Color.YELLOW);
