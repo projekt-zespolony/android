@@ -34,13 +34,10 @@ public class OptimizationFragment extends Fragment {
 
 
         measurementsHistoryViewModel = new ViewModelProvider(this).get(MeasurementsHistoryViewModel.class);
-        measurementsHistoryViewModel.getSensorsHours().observe(getViewLifecycleOwner(), sensors -> {
-
-        });
 
         optimizationDataViewModel = new ViewModelProvider(this).get(OptimizationDataViewModel.class);
         optimizationDataViewModel.getOptimizationData().observe(getViewLifecycleOwner(),optimizationData -> {
-
+            updateView();
         });
 
         measurementsViewModel = new ViewModelProvider(this).get(MeasurementsViewModel.class);
