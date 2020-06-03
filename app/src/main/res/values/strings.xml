@@ -6,7 +6,7 @@
     <string name="measurement_temperature">Temperature</string>
     <string name="measurement_humidity">Humidity</string>
     <string name="measurement_pressure">Pressure</string>
-    <string name="measurement_gas">Gas</string>
+    <string name="measurement_gas">Air Quality</string>
     <string name="measurement_peopleInTheRoom">People in the room</string>
     <string name="measurement_windowsOpened">Windows opened</string>
     <string name="measurement_recommendation">Recommendation</string>
