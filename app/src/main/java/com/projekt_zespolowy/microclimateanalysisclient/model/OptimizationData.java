@@ -17,4 +17,17 @@ public class OptimizationData {
     public boolean isWindowsOpened() { return windowsOpened; }
 
     public boolean arePeopleInTheRoom() { return peopleInTheRoom; }
+
+    public String getWindowsOpenedAsString()
+    {
+        if(windowsOpened == true) return "Yes";
+        else return "No";
+    }
+
+    public String getPeopleInTheRoomAsString()
+    {
+        if(peopleInTheRoom==true) return "Yes";
+        else return "No";
+    }
+
 }

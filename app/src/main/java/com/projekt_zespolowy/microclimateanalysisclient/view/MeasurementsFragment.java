@@ -17,6 +17,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.projekt_zespolowy.microclimateanalysisclient.R;
 import com.projekt_zespolowy.microclimateanalysisclient.databinding.FragmentMeasurementsBinding;
 import com.projekt_zespolowy.microclimateanalysisclient.viewmodel.MeasurementsViewModel;
+import com.projekt_zespolowy.microclimateanalysisclient.viewmodel.OptimizationDataViewModel;
 
 import java.util.Calendar;
 
@@ -24,14 +25,15 @@ public class MeasurementsFragment extends Fragment implements Runnable {
     private static final String TAG = MeasurementsFragment.class.getName();
 
     private FragmentMeasurementsBinding binding;
-    private MeasurementsViewModel viewModel;
+    private MeasurementsViewModel measurementsViewModel;
+    private OptimizationDataViewModel optimizationDataViewModel;
     private Handler handler;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         handler = new Handler();
-        viewModel = new ViewModelProvider(this).get(MeasurementsViewModel.class);
-        viewModel.getSensors().observe(getViewLifecycleOwner(), sensors -> {
+        measurementsViewModel = new ViewModelProvider(this).get(MeasurementsViewModel.class);
+        measurementsViewModel.getSensors().observe(getViewLifecycleOwner(), sensors -> {
             // Set sensors readings values
             binding.textViewTimestampValue.setText(getTimestampDate(sensors.getTimestamp()));
             binding.textViewTemperatureValue.setText(String.valueOf(sensors.getTemperature()));
@@ -43,8 +45,18 @@ public class MeasurementsFragment extends Fragment implements Runnable {
             binding.textViewTemperatureValue.setTextColor(getTemperatureColor(sensors.getTemperature()));
             binding.textViewGasValue.setTextColor(getGasColor(sensors.getGas()));
         });
-        viewModel.getError().observe(getViewLifecycleOwner(), throwable -> {
+        measurementsViewModel.getError().observe(getViewLifecycleOwner(), throwable -> {
             Snackbar.make(binding.getRoot(), throwable.toString(), Snackbar.LENGTH_SHORT).show();
+        });
+
+        optimizationDataViewModel = new ViewModelProvider(this).get(OptimizationDataViewModel.class);
+        optimizationDataViewModel.getOptimizationData().observe(getViewLifecycleOwner(), optimizationData -> {
+            // Set optimizationData readings values
+            binding.textViewPeopleInTheRoomValue.setText(optimizationData.getPeopleInTheRoomAsString());
+            binding.textViewWindowsOpenedValue.setText(optimizationData.getWindowsOpenedAsString());
+        });
+        optimizationDataViewModel.getError().observe(getViewLifecycleOwner(), throwable -> {
+            Snackbar.make(binding.getRoot(),throwable.toString(),Snackbar.LENGTH_SHORT).show();
         });
         binding = FragmentMeasurementsBinding.inflate(inflater);
         return binding.getRoot();
@@ -57,7 +69,8 @@ public class MeasurementsFragment extends Fragment implements Runnable {
 
     @Override
     public void run() {
-        viewModel.updateSensors();
+        measurementsViewModel.updateSensors();
+        optimizationDataViewModel.updateOptimizationData();
         handler.postDelayed(this, 5000);
     }
 
@@ -113,4 +126,5 @@ public class MeasurementsFragment extends Fragment implements Runnable {
         else if(gas < 500) return res.getColor(R.color.air_very_bad);
         else return 0;
     }
+
 }

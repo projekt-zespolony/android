@@ -3,6 +3,7 @@ package com.projekt_zespolowy.microclimateanalysisclient.viewmodel;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.projekt_zespolowy.microclimateanalysisclient.api.OptimizationDataApi;
 import com.projekt_zespolowy.microclimateanalysisclient.model.OptimizationData;
@@ -13,7 +14,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class OptimizationDataViewModel {
+public class OptimizationDataViewModel extends ViewModel {
     private OptimizationDataApi api;
     private MutableLiveData<OptimizationData> optimizationData;
     private MutableLiveData<Throwable> error;
@@ -36,7 +37,7 @@ public class OptimizationDataViewModel {
         return error;
     }
 
-    private void updateOptimizationData() {
+    public void updateOptimizationData() {
         api.optimizationData().enqueue(new Callback<OptimizationData>() {
             @Override
             public void onResponse(@NonNull Call<OptimizationData> call, @NonNull Response<OptimizationData> response) {
