@@ -1,5 +1,8 @@
 package com.projekt_zespolowy.microclimateanalysisclient.model;
 
+import android.content.res.Resources;
+import com.projekt_zespolowy.microclimateanalysisclient.R;
+
 public class Sensors {
     private final long timestamp;
     private final float temperature;
@@ -34,4 +37,6 @@ public class Sensors {
     public float getGas() {
         return gas;
     }
+
+
 }
