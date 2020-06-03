@@ -37,10 +37,11 @@ public class MeasurementsFragment extends Fragment implements Runnable {
             binding.textViewTemperatureValue.setText(String.valueOf(sensors.getTemperature()));
             binding.textViewHumidityValue.setText(String.valueOf(sensors.getHumidity()));
             binding.textViewPressureValue.setText(String.valueOf(sensors.getPressure()));
-            binding.textViewGasValue.setText(String.valueOf(sensors.getGas()));
+            binding.textViewGasValue.setText(gasToString(sensors.getGas()));
 
             // Set sensors readings colors
             binding.textViewTemperatureValue.setTextColor(getTemperatureColor(sensors.getTemperature()));
+            binding.textViewGasValue.setTextColor(getGasColor(sensors.getGas()));
         });
         viewModel.getError().observe(getViewLifecycleOwner(), throwable -> {
             Snackbar.make(binding.getRoot(), throwable.toString(), Snackbar.LENGTH_SHORT).show();
@@ -89,5 +90,27 @@ public class MeasurementsFragment extends Fragment implements Runnable {
             return res.getColor(R.color.temperature_high);
 
         return res.getColor(R.color.temperature_too_damn_high);
+    }
+
+    private String gasToString(float gas)
+    {
+        if(gas > 0 && gas < 51) return "Good";
+        if(gas < 100) return "Average";
+        if(gas < 150) return "Little bad";
+        if(gas < 200) return "Bad";
+        if(gas < 500) return "Very bad";
+        else return "";
+    }
+
+    private int getGasColor(float gas)
+    {
+        Resources res = getResources();
+
+        if(gas > 0 && gas < 51) return res.getColor(R.color.air_good);
+        else if(gas < 100) return res.getColor(R.color.air_average);
+        else if(gas < 150) return res.getColor(R.color.air_little_bad);
+        else if(gas < 200) return res.getColor(R.color.air_bad);
+        else if(gas < 500) return res.getColor(R.color.air_very_bad);
+        else return 0;
     }
 }
