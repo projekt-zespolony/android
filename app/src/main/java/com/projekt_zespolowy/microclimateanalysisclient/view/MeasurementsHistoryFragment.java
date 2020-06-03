@@ -99,12 +99,11 @@ public class MeasurementsHistoryFragment extends Fragment implements SwipeRefres
                     String humidity = Float.toString(sensorsList.get(i).getHumidity());
                     String airQuality;
 
-                    if(sensorsList.get(i).getGas()<50) airQuality="Good";
-                    else if(sensorsList.get(i).getGas()<100) airQuality="Average";
-                    else if(sensorsList.get(i).getGas()<150) airQuality="Little Bad";
-                    else if(sensorsList.get(i).getGas()<200) airQuality="Bad";
-                    else if(sensorsList.get(i).getGas()<300) airQuality="Worse";
-                    else if(sensorsList.get(i).getGas()<500) airQuality="Very Bad";
+                    if(sensorsList.get(i).getGas()<51) airQuality="Good";
+                    else if(sensorsList.get(i).getGas()<101) airQuality="Average";
+                    else if(sensorsList.get(i).getGas()<151) airQuality="Little Bad";
+                    else if(sensorsList.get(i).getGas()<201) airQuality="Bad";
+                    else if(sensorsList.get(i).getGas()<501) airQuality="Very Bad";
                     else airQuality="";
 
 
